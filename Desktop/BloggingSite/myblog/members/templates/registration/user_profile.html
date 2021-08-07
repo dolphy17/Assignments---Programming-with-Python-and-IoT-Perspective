@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+   <h1>{{ page_user.user.first_name }} {{ page_user.user.last_name }}</h1>
+
+   <br>
+
+   <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+  {% if page_user.profile_pic %}  
+        <img src="{{ page_user.profile_pic.url }}" class="card-img">
+  {% else %}
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUIKNUwXelvMQnQoUoRHLYip988VJPrO3YXg&usqp=CAU" class="card-img">
+  {% endif %}    
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</h5>
+          <p class="small text-muted">
+          
+            {% if page_user.profile.website_url %}
+               <a href="{{ page_user.website_url }}">Website</a> | 
+            {% endif %}
+            
+            {% if page_user.facebook_url %}
+               <a href="{{ page_user.facebook_url }}"><i class="fab fa-facebook-square"></i></a>  |
+            {% endif %}
+
+            {% if page_user.twitter_url %}
+               <a href="{{ page_user.twitter_url }}"><i class="fab fa-twitter-square"></i></a>  |
+            {% endif %}
+            
+            {% if page_user.instagram_url %}
+               <a href="{{ page_user.instagram_url }}"><i class="fab fa-instagram"></i></a>  | 
+            {% endif %}
+
+            {% if page_user.pinterest_url %}
+               <a href="{{ page_user.pinterest_url }}"><i class="fab fa-pinterest"></i></a> 
+            {% endif %}   
+          </p>
+          
+          <p class="card-text">
+                {{ page_user.bio }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+{% endblock %}
